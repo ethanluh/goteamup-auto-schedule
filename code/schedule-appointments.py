@@ -31,7 +31,7 @@ master_login = ["ethanluh@gmail.com", "15kangarooKS@"]
 
 ##-- BEGIN --##
 
-def initialize(login, headless, true):
+def initialize(login, headless, test):
 	initialize_webdriver(headless)
 	initialize_goteamup(master_login, test)
 
@@ -73,17 +73,20 @@ def create_appointment(class_type, coach, student, appointment_info):
 	click(By.CSS_SELECTOR, 'button.btn.btn-primary.btn-block')
 
 def schedule_weekly(scheduling_info):
+	class_type, coach, student, days, amount = scheduling_info
 	offsets = []
 	for i in range(len(days)):
 		offset = days[i][0] - date.today().weekday()
 		offsets.append(offset if offset > 0 else offset + 7)
 	offsets.sort()
 	for i in range(amount):
-		print(i)
-		# create_appointment("Private Lesson", "TEST STAFF", "TEST TEST", [date.today() + timedelta(days=7*np.floor(i/len(days)) + offsets[i%len(days)]), days[i%len(days)][1], days[i%len(days)][2]])
+		create_appointment(class_type, coach, student, [date.today() + timedelta(days=7*np.floor(i/len(days)) + offsets[i%len(days)]), days[i%len(days)][1], days[i%len(days)][2]])
 
-# def schedule_all()
+def schedule_all(scheduling_list):
+	for scheduling_info in scheduling_list:
+		schedule_weekly(scheduling_info)
+
 initialize(master_login, True, True)
-schedule_weekly(classes["Private Lesson"], instructor["Armin Arlelt"], customer["Amy Smith"], [[0, 7, 20], [0, 7, 40], [2, 7, 20], [4, 7, 20]], 40)
+schedule_all(appointments)
 wait(20)
 close()
