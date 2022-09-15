@@ -1,12 +1,8 @@
+import importlib  
 import numpy as np
 from datetime import date, datetime, timedelta
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.ui import WebDriverWait
+
+webscra = importlib.import_module("webbrowser-scraper")
 
 ##-- TESTING --##
 customer = {
@@ -27,16 +23,12 @@ appointments = [
 	["Private Lesson", "Ethan Luh", "James Smith", [[0, 7, 20], [0, 7, 40], [2, 7, 20], [4, 7, 20]], 20]
 ]
 
-master_login = ["ethanluh@gmail.com", "15kangarooKS@"]
 
 ##-- BEGIN --##
 
 def initialize(login, headless, test):
 	initialize_webdriver(headless)
 	initialize_goteamup(master_login, test)
-
-def close():
-	driver.quit()
 
 def wait(sec):
 	wait = WebDriverWait(driver, sec)
@@ -68,12 +60,11 @@ def click(search_type, value):
 
 def create_appointment(class_type, coach, student, appointment_info):
 	link = "https://goteamup.com/providers/appointments/" + str(classes[class_type]) + "/book?instructor=" + str(instructor[coach]) + "&customer_id=" + str(customer[student]) + "&encoded_appointment_slot_data=" + generate_appointment_code(appointment_info)
-	print(appointment_info[0])
+	# print(appointment_info[0])
 	driver.get(link)
 	click(By.CSS_SELECTOR, 'button.btn.btn-primary.btn-block')
 
-def schedule_weekly(scheduling_info):
-	class_type, coach, student, days, amount = scheduling_info
+def schedule_weekly(class_type, coach, student, days, amount):
 	offsets = []
 	for i in range(len(days)):
 		offset = days[i][0] - date.today().weekday()
@@ -81,12 +72,3 @@ def schedule_weekly(scheduling_info):
 	offsets.sort()
 	for i in range(amount):
 		create_appointment(class_type, coach, student, [date.today() + timedelta(days=7*np.floor(i/len(days)) + offsets[i%len(days)]), days[i%len(days)][1], days[i%len(days)][2]])
-
-def schedule_all(scheduling_list):
-	for scheduling_info in scheduling_list:
-		schedule_weekly(scheduling_info)
-
-initialize(master_login, True, True)
-schedule_all(appointments)
-wait(20)
-close()
