@@ -21,8 +21,6 @@ def get_customer_id(name):
 def get_coach_id(name):
 	data_source = "https://goteamup.com/providers/configure/staff/"
 	driver.get(data_source)
-	coach_id = driver.find_element(By.XPATH, "//h4[contains(text(),'" + name + "')]//ancestor::div[4]//a[contains(text(),'/providers/configure/staff/')]").get_attribute('href')
-	return coach_id
-
-print(get_coach_id("Armin Arlelt"))
+	coach_id = driver.find_element(By.XPATH, "//h4[contains(text(),'" + name + "')]//ancestor::div[4]//descendant::a[contains(text(),'Edit Details and Permissions')]").get_attribute('href')
+	return coach_id[-12: -6]
 
