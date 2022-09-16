@@ -25,7 +25,7 @@ def schedule_weekly(scrape_data, appointment_times, amount):
 		offsets.append(offset if offset > 0 else offset + 7)
 	offsets.sort()
 	for i in range(amount):
-		create_appointment(scrape_data, [date.today() + timedelta(appointment_times=7*np.floor(i/len(appointment_times)) + offsets[i%len(appointment_times)]), appointment_times[i%len(appointment_times)][1], appointment_times[i%len(appointment_times)][2]])
+		create_appointment(scrape_data, [date.today() + timedelta(7*np.floor(i/4)+offset[i%4]), appointment_times[i%4][1], appointment_times[i%4][2]])
 
 def book_package(customer, appointment_type, pack_size, appointment_times, primary_coach):
 	scrape_data = wbscrape.scrape_page(customer, primary_coach)
