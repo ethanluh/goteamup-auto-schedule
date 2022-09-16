@@ -18,15 +18,14 @@ def complex_encode(n, zero, offset):
 	based_d2 = ("0" + baseN(d2, 4))[-2:]
 	return zero + ALPH_CODE[d1 + 48] + ALPH_CODE[int(based_d2[slice(1)]) + 12] + ALPH_CODE[(int(based_d2[slice(1,2)]) * 16 + offset)%62]
 
-def generate_appointment_code(appointment_info):
-	appointment_date, hour, minute = appointment_info
-	year_string = str(appointment_date.year)[slice(2, 4)]
-	month_string = ("0" + str(appointment_date.month))[-2:]
-	day_string = ("0" + str(appointment_date.day))[-2:]
-	s_hour_string = ("0" + str(hour))[-2:]
-	s_min_string = ("0" + str(minute))[-2:]
-	e_hour_string = ("0" + str(hour + int(np.floor((minute+20)/60))))[-2:]
-	e_min_string = ("0" + str((minute+20)%60))[-2:]
+def generate_appointment_code(appointment_dati):
+	year_string = appointment_dati.strftime("%y")
+	month_string = appointment_dati.strftime("%m")
+	day_string = appointment_dati.strftime("%d")
+	s_hour_string = appointment_dati.strftime("%H")
+	s_min_string = appointment_dati.strftime("%M")
+	e_hour_string = (appointment_dati + timedelta(minutes=20)).strftime("%H")
+	e_min_string = (appointment_dati + timedelta(minutes=20)).strftime("%M")
 	base = 'eyJpbnN0cnVjdG9yIjogMTExMDUyLCAidmVudWUiOiA0NDEwMiwgInZlbnVlX3Jvb20iOiBudWxsLCAib2ZmZXJpbmdfdHlwZSI6IDE0MDc0NCwgInN0YXJ0X3RpbWUiOiAiMj'
 	appointment_code = base + complex_encode(year_string, "A", 2)
 	appointment_code += complex_encode(month_string, "0", 2) 
