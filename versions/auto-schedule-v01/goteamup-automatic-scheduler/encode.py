@@ -26,7 +26,7 @@ def generate_appointment_code(appointment_dati):
 	s_min_string = appointment_dati.strftime("%M")
 	e_hour_string = (appointment_dati + timedelta(minutes=20)).strftime("%H")
 	e_min_string = (appointment_dati + timedelta(minutes=20)).strftime("%M")
-	base = 'eyJpbnN0cnVjdG9yIjogMTExMDUyLCAidmVudWUiOiA0NDEwMiwgInZlbnVlX3Jvb20iOiBudWxsLCAib2ZmZXJpbmdfdHlwZSI6IDE0MDc0NCwgInN0YXJ0X3RpbWUiOiAiMj'
+	base = 'eyJpbnN0cnVjdG9yIjogMTExMTE0LCAidmVudWUiOiA0NDEwMiwgInZlbnVlX3Jvb20iOiBudWxsLCAib2ZmZXJpbmdfdHlwZSI6IDE0MDc0NCwgInN0YXJ0X3RpbWUiOiAiMj'
 	appointment_code = base + complex_encode(year_string, "A", 2)
 	appointment_code += complex_encode(month_string, "0", 2) 
 	appointment_code += complex_encode(day_string, "0", 5) 
@@ -42,3 +42,5 @@ def generate_appointment_code(appointment_dati):
 	appointment_code += "Oj" + simple_encode("00") + "In0="
 
 	return appointment_code
+
+print(complex_encode("10", "0", 0))
