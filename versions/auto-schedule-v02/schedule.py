@@ -1,24 +1,21 @@
 import numpy as np
 from settings import *
 
-
-# SCHEDULE = np.zeros((7, NUM_SLOTS),dtype=int)
-
-def add_appointment(day, time, name):
+def add_appointment(day, time, name, schedule):
 	appointment_range = [time, time + dt.timedelta(minutes=20)]
 
-	if (END - appointment_range[0]).days < 0 or (appointment_range[0] - START).days < 0:
-		return print("Time is out of range")
-	slot = str(dt.timedelta(days=day, seconds=time.seconds))
+	if not START <= time <= END:
+		raise ValueError("Time provided is out of range")
+	slot = str(dt.timedelta(days=day, seconds=time.seconds).seconds)
 	client_id = get_clientid(name)
-	if slot in SCHEDULE:
-		return print("There is already an appointment scheduled for that time")
+	if slot in schedule:
+		raise ValueError("Time provided is already occupied")
 	else:
-		SCHEDULE[slot] = client_id
-		write_csv("schedule.csv", SCHEDULE)
-		return print(str(client_id) + " successfully scheduled an appointment for " + WEEK[day] + " at " + str(time))
-
+		schedule[slot] = client_id
+		return schedule
 
 if __name__ == "__main__":
 	SCHEDULE = read_csv("schedule.csv")
-	add_appointment(4, dt.timedelta(hours=7, minutes=40), "Ethan")
+	SCHEDULE = add_appointment(4, dt.timedelta(hours=8, minutes=40), "Ethan Luh", SCHEDULE)
+	SCHEDULE = add_appointment(4, dt.timedelta(hours=9, minutes=40), "Mia Luh", SCHEDULE)
+	write_csv("schedule.csv", SCHEDULE)

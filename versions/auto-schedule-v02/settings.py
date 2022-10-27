@@ -35,9 +35,10 @@ def read_csv(file):
 CLIENTS = read_csv("clients.csv")
 
 def get_clientid(name):
+	name = name.lower()
 	if not name in CLIENTS:
 		try:
-			CLIENTS[name] = list(CLIENTS.items())[-1][1] + 1
+			CLIENTS[name] = str(int(list(CLIENTS.items())[-1][1]) + 1)
 		except:
 			CLIENTS[name] = 100
 	write_csv("clients.csv", CLIENTS)
