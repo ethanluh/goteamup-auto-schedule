@@ -14,8 +14,8 @@ def add_appointment(day, time, name, schedule):
 		schedule[slot] = client_id
 		return schedule
 
-if __name__ == "__main__":
-	SCHEDULE = read_csv("schedule.csv")
-	SCHEDULE = add_appointment(4, dt.timedelta(hours=8, minutes=40), "Ethan Luh", SCHEDULE)
-	SCHEDULE = add_appointment(4, dt.timedelta(hours=9, minutes=40), "Mia Luh", SCHEDULE)
-	write_csv("schedule.csv", SCHEDULE)
+# if __name__ == "__main__":
+# 	SCHEDULE = read_csv("schedule.csv")
+# 	SCHEDULE = add_appointment(4, dt.timedelta(hours=8, minutes=40), "Ethan Luh", SCHEDULE)
+# 	SCHEDULE = add_appointment(4, dt.timedelta(hours=9, minutes=40), "Mia Luh", SCHEDULE)
+# 	write_csv("schedule.csv", SCHEDULE)
