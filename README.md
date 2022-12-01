@@ -117,9 +117,9 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-* npm
-  ```sh
-  pip install -U seleniu
+* Selenium
+  ```
+  Install at: https://pypi.org/project/selenium/#installing
   ```
 
 <!-- ### Installation
