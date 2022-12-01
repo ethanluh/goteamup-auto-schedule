@@ -117,10 +117,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-* Selenium
-  ```
-  Install at: https://pypi.org/project/selenium/#installing
-  ```
+* [Install](https://pypi.org/project/selenium/#installing) Selenium
 
 <!-- ### Installation
 
