@@ -43,7 +43,7 @@ def book_package(customer, appointment_type, pack_size, appointment_times, prima
 	scrape_data = wbscrape.scrape_page(customer, primary_coach)
 	schedule_weekly(scrape_data, appointment_times, pack_size)
 
-book_package("Amy Smith", "Private Lesson", 40, [[0, 19, 20], [0, 19, 40], [2, 20, 00], [4, 19, 40]], "Armin Arlelt")
+book_package("Amy Smith", "Private Lesson", 5, [[0, 19, 20], [0, 19, 40], [2, 20, 00], [4, 19, 40]], "Armin Arlelt")
 # create_appointment(['140744', '5977322', '111114'], datetime(2022, 12, 20, 19, 20))
 # print(encd.generate_appointment_code(datetime(2022, 12, 20, 19, 20)))
 

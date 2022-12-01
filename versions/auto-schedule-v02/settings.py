@@ -15,31 +15,8 @@ WEEK = {
 	5: "Saturday",
 	6: "Sunday",
 }
-
-def write_csv(file, d):
-	w = csv.writer(open(file, "w"))
-	for key, val in d.items():
-		w.writerow([key, val])
-
-def read_csv(file):
-	try:
-		csv_file = open(file, "r")
-	except:
-		csv_file = open(file, "w")
-	r = csv.reader(csv_file)
-	d = {}
-	for row in r:
-		d[row[0]] = row[1]
-	return d
-
-CLIENTS = read_csv("clients.csv")
-
-def get_clientid(name):
-	name = name.lower()
-	if not name in CLIENTS:
-		try:
-			CLIENTS[name] = str(int(list(CLIENTS.items())[-1][1]) + 1)
-		except:
-			CLIENTS[name] = 100
-	write_csv("clients.csv", CLIENTS)
-	return str(CLIENTS[name])
+def read_csv(filename, fields):
+	file = open(filename, 'a')
+	row_count = file.line_num
+	print(row_count)
+	csv.DictReader(file, fieldnames=fields)
