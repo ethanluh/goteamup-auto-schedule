@@ -26,7 +26,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+<!-- [![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 
 
@@ -34,13 +34,13 @@
 <br />
 <div align="center">
   <a href="https://github.com/ethanluh/goteamup-auto-schedule">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <!-- <img src="images/logo.png" alt="Logo" width="80" height="80"> -->
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">TeamUp Automatic Scheduler</h3>
 
   <p align="center">
-    project_description
+    Automatic scheduler for GoTeamUp. Adds appointments based on a weekly schedule. Renews memberships after expiration.
     <br />
     <a href="https://github.com/ethanluh/goteamup-auto-schedule"><strong>Explore the docs »</strong></a>
     <br />
@@ -229,8 +229,8 @@ Project Link: [https://github.com/ethanluh/goteamup-auto-schedule](https://githu
 [issues-url]: https://github.com/ethanluh/goteamup-auto-schedule/issues
 [license-shield]: https://img.shields.io/github/license/ethanluh/goteamup-auto-schedule.svg?style=for-the-badge
 [license-url]: https://github.com/ethanluh/goteamup-auto-schedule/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+<!-- [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/linkedin_username -->
 [product-screenshot]: images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
